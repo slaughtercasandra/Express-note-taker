@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
-const htmlRoutes = require("./routes/html");
-//const notes= require('./public/notes');
+const htmlRoutes = require("./routes/htmlRoutes");
+// const notes= require('./public/notes');
 const api = require('./routes/api');
 const PORT = 3001;
 

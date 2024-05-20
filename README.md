@@ -1,62 +1,79 @@
-# note-taker
-# 11 Express.js: Note Taker
 
-## Your Task
+#Note Taker
 
-Your assignment is to modify starter code to create an application called Note Taker that can be used to write and save notes. This application will use an Express.js back end and will save and retrieve note data from a JSON file.
+A note-taking application built with Express.js for small business owners to organize their thoughts and tasks efficiently.
+The Note Taker application is designed to provide users with a simple yet powerful tool to write, save, and organize notes. Leveraging Express.js on the backend, notes are stored and retrieved from a JSON file, offering seamless access to previously saved notes. This application fulfills the need for small business owners and individuals alike to keep track of tasks, ideas, and important information.
 
-The application’s front end has already been created. It's your job to build the back end, connect the two, and then deploy the entire application to Render.
+##Table of Contents
 
-## User Story
+Description
+User Story
+Acceptance Criteria
+Mock-Up
+Features
+Getting Started
+Installation
+Usage
+Routes
+Technologies Used
+License
+Description
 
-```md
+
+##User Story
+
 AS A small business owner
 I WANT to be able to write and save notes
 SO THAT I can organize my thoughts and keep track of tasks I need to complete
-```
+Acceptance Criteria
 
-## Acceptance Criteria
+User is presented with a landing page containing a link to the notes page.
+Clicking on the notes link takes the user to a page displaying existing notes on the left and fields to enter a new note on the right.
+User can enter a new note title and its text, and Save and Clear Form buttons appear.
+Clicking Save adds the new note to the list of existing notes and removes the buttons from the navigation.
+Clicking on an existing note displays it in the right-hand column, and a New Note button appears.
+Clicking New Note presents the user with empty fields to enter a new note title and text.
+Note-taking functionality operates smoothly and intuitively.
+Mock-Up
 
-```md
-GIVEN a note-taking application
-WHEN I open the Note Taker
-THEN I am presented with a landing page with a link to a notes page
-WHEN I click on the link to the notes page
-THEN I am presented with a page with existing notes listed in the left-hand column, plus empty fields to enter a new note title and the note’s text in the right-hand column
-WHEN I enter a new note title and the note’s text
-THEN a "Save Note" button and a "Clear Form" button appear in the navigation at the top of the page
-WHEN I click on the Save button
-THEN the new note I have entered is saved and appears in the left-hand column with the other existing notes and the buttons in the navigation disappear
-WHEN I click on an existing note in the list in the left-hand column
-THEN that note appears in the right-hand column and a "New Note" button appears in the navigation
-WHEN I click on the "New Note" button in the navigation at the top of the page
-THEN I am presented with empty fields to enter a new note title and the note’s text in the right-hand column and the button disappears
-```
+##Features
 
-## Mock-Up
+Create, save, and organize notes efficiently.
+Intuitive user interface for seamless note-taking experience.
+Easily navigate between existing notes and create new ones.
+Responsive design for optimal user experience across devices.
+Getting Started
 
-The following GIF shows the web application's appearance and functionality:
+To run the Note Taker application locally, follow these steps:
 
-![Existing notes are listed in the left-hand column with empty fields on the right-hand side for the new note’s title and text.](./Assets/11-express-homework-demo.gif)
+##Installation
+Clone this repository to your local machine.
 
-## Getting Started
+Navigate to the project directory in your terminal.
 
-On the back end, the application should include a `db.json` file that will be used to store and retrieve notes using the `fs` module.
+Install dependencies by running:
+npm install
+Start the server by running:
+npm start
+Open your preferred web browser and navigate to http://localhost:3001.
 
-The following HTML routes should be created:
+##Routes
 
-* `GET /notes` should return the `notes.html` file.
+HTML Routes
+GET /notes: Returns the notes.html file.
+GET *: Returns the index.html file.
+API Routes
+GET /api/notes: Reads the db.json file and returns all saved notes as JSON.
+POST /api/notes: Receives a new note to save on the request body, adds it to the db.json file, and returns the new note to the client.
 
-* `GET *` should return the `index.html` file.
+##Technologies Used
 
-The following API routes should be created:
+Express.js
+Node.js
+JavaScript
+HTML
+CSS
+License
 
-* `GET /api/notes` should read the `db.json` file and return all saved notes as JSON.
+This project is licensed under the MIT License.
 
-* `POST /api/notes` should receive a new note to save on the request body, add it to the `db.json` file, and then return the new note to the client. You'll need to find a way to give each note a unique id when it's saved (look into npm packages that could do this for you).
-
-## Bonus
-
-You haven’t learned how to handle DELETE requests, but this application offers that functionality on the front end. As a bonus, try to add the DELETE route to the application using the following guideline:
-
-* `DELETE /api/notes/:id` should receive a query parameter that contains the id of a note to delete. To delete a note, you'll need to read all notes from the `db.json` file, remove the note with the given `id` property, and then rewrite the notes to the `db.json` file.
