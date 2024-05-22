@@ -28,14 +28,23 @@ router.post('/notes', (req, res) => {
 });
 
 router.delete('/notes/:id', (req, res) => {
-    const noteId = req.params.id; // No need to parseInt
+    const noteId = req.params.id;
+
     fs.readFile(path.join(__dirname, './develop/db.json'), 'utf8', (err, data) => {
-        if (err) throw err;
+        if (err) {
+            console.error("Error reading file:", err);
+            return res.status(500).json({ error: "Failed to read data file." });
+        }
+
         let notes = JSON.parse(data);
-        notes = notes.filter(note => note.id !== noteId);
-        fs.writeFile(path.join(__dirname, './develop/db.json'), JSON.stringify(notes), err => {
-            if (err) throw err;
-            res.json({ success: true }); // Corrected spelling of success
+        const filteredNotes = notes.filter(note => note.id !== noteId);
+
+        fs.writeFile(path.join(__dirname, './develop/db.json'), JSON.stringify(filteredNotes), (err) => {
+            if (err) {
+                console.error("Error writing file:", err);
+                return res.status(500).json({ error: "Failed to write data file." });
+            }
+            res.json({ success: true });
         });
     });
 });
